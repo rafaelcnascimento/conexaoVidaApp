@@ -19,7 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="65dp"
             android:orientation="horizontal">
 
             <TextView
@@ -52,7 +52,7 @@
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="251dp"
-                android:layout_height="wrap_content"
+                android:layout_height="65dp"
                 android:layout_weight="1"
                 android:text="Tipo Sanguíneo:"
                 android:textColor="@android:color/black"
@@ -69,7 +69,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="65dp"
             android:orientation="horizontal">
 
             <TextView
@@ -94,7 +94,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="65dp"
             android:orientation="horizontal">
 
             <TextView
@@ -120,7 +120,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="65dp"
             android:orientation="horizontal">
 
             <TextView
@@ -144,7 +144,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="65dp"
             android:orientation="horizontal">
 
             <TextView
@@ -170,7 +170,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="65dp"
             android:orientation="horizontal">
 
             <TextView
@@ -192,21 +192,13 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:orientation="horizontal">
-
-
-        </LinearLayout>
-
 
         <Button
             android:id="@+id/button"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="125dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:background="?attr/actionModeSplitBackground"
             android:onClick="registrarPedido"
             android:text="Enviar"

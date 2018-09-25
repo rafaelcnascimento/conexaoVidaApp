@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class detalhesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class detalhesActivity extends menuActivity implements AdapterView.OnItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class detalhesActivity extends AppCompatActivity implements AdapterView.O
         // Spinner Drop down elements
         List<String> estados = new ArrayList<String>();
 
+        estados.add("São Paulo - SP");
         estados.add("Rio Grande do Sul - RS");
         estados.add("Santa Catarina - SC");
         estados.add("Paraná - PR");
