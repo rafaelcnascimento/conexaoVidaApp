@@ -56,9 +56,10 @@
             android:layout_marginLeft="125dp"
             android:layout_marginTop="30dp"
             android:background="?attr/actionModeSplitBackground"
+            android:onClick="logar"
             android:text="Entrar"
             android:textAlignment="center"
-            android:textColor="@android:color/background_light" />/>
+            android:textColor="@android:color/background_light" />
 
 
     </LinearLayout>

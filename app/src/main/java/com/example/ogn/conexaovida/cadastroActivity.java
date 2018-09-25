@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +83,9 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
         Intent intent = new Intent(this, loginActivity.class);
 
         startActivity(intent);
+
+        Toast.makeText(cadastroActivity.this, "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
+
     }
 
     public void onRadioButtonClicked(View v) {

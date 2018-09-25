@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dados"
+        android:title="Meus dados" />
+    <item
+        android:id="@+id/sobre"
+        android:title="Como Funciona" />
+    <item
+        android:id="@+id/doacoes"
+        android:title="Doações" />
+    <item
+        android:id="@+id/pedido"
+        android:title="Pedido de Doação" />
+    <item
+        android:id="@+id/logout"
+        android:title="Logout" />
+</menu>

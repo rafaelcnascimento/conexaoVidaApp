@@ -24,6 +24,8 @@
         <activity android:name=".sobreActivity" />
         <activity android:name=".loginActivity" />
         <activity android:name=".cadastroActivity" />
+        <activity android:name=".mainActivity" />
+        <activity android:name=".menuActivity"></activity>
     </application>
 
 </manifest>
