@@ -18,7 +18,7 @@ public class sobreActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         Intent intent = getIntent();
-        String activityMae = intent.getStringExtra("iesa.ads.primeiraaplicacao.MAE");
+        String activityMae = intent.getStringExtra("com.example.ogn.conexaovida.MAE");
 
         if (activityMae.equals("menu")) {
             getMenuInflater().inflate(R.menu.menulogando, menu);
