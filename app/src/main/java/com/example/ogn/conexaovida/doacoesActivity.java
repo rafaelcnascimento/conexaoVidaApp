@@ -1,13 +1,9 @@
 package com.example.ogn.conexaovida;
 
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class doacoesActivity extends menuActivity {
 
@@ -16,7 +12,14 @@ public class doacoesActivity extends menuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doacoes);
 
+        tabelaDoacoes t1 = (tabelaDoacoes) getSupportFragmentManager().findFragmentById(R.id.fragment);
+        t1.setDados("Jair Bolsonaro","O+");
+
+        tabelaDoacoes t2 = (tabelaDoacoes) getSupportFragmentManager().findFragmentById(R.id.fragment2);
+        t2.setDados("Alexei Nikolaevich","AB-");
+
     }
+
 
     public void detalhes(View V) {
 
