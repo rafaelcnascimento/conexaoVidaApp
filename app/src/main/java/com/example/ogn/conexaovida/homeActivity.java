@@ -16,6 +16,8 @@ public class homeActivity extends AppCompatActivity {
     public void sobre(View v) {
         Intent intent = new Intent(this, sobreActivity.class);
 
+        intent.putExtra("com.example.ogn.conexaovida.MAE","home");
+
         startActivity(intent);
     }
 

@@ -30,6 +30,8 @@ public class menuActivity extends AppCompatActivity {
             case R.id.sobre:
                 Intent intent2 = new Intent(this, sobreActivity.class);
 
+                intent2.putExtra("com.example.ogn.conexaovida.MAE","menu");
+
                 startActivity(intent2);
                 break;
             case R.id.doacoes:
