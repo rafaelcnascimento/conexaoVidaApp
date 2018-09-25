@@ -26,7 +26,11 @@
         <activity android:name=".cadastroActivity" />
         <activity android:name=".mainActivity" />
         <activity android:name=".menuActivity" />
-        <activity android:name=".pedidoActivity"></activity>
+        <activity android:name=".pedidoActivity" />
+        <activity android:name=".dadosActivity" />
+        <activity android:name=".senhaActivity" />
+        <activity android:name=".doacoesActivity" />
+        <activity android:name=".detalhesActivity"></activity>
     </application>
 
 </manifest>

@@ -33,7 +33,9 @@ public class sobreActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.dados:
-                //
+                Intent intent1 = new Intent(this, dadosActivity.class);
+
+                startActivity(intent1);
                 break;
             case R.id.sobre:
                 Intent intent2 = new Intent(this, sobreActivity.class);
@@ -43,10 +45,14 @@ public class sobreActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.doacoes:
-                //
+                Intent intent3 = new Intent(this, doacoesActivity.class);
+
+                startActivity(intent3);
                 break;
             case R.id.pedido:
-                //
+                Intent intent4 = new Intent(this, pedidoActivity.class);
+
+                startActivity(intent4);
                 break;
             case R.id.logout:
                 Intent intent5 = new Intent(this, homeActivity.class);

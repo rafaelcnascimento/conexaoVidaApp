@@ -12,13 +12,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class pedidoActivity extends menuActivity implements AdapterView.OnItemSelectedListener {
+public class detalhesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedido);
-
+        setContentView(R.layout.activity_detalhes);
         // Spinner element
         Spinner spinnerSangue = (Spinner) findViewById(R.id.spinnerSangue);
 
@@ -52,6 +51,7 @@ public class pedidoActivity extends menuActivity implements AdapterView.OnItemSe
 
         // Spinner Drop down elements
         List<String> estados = new ArrayList<String>();
+
         estados.add("Rio Grande do Sul - RS");
         estados.add("Santa Catarina - SC");
         estados.add("Paraná - PR");
@@ -78,13 +78,4 @@ public class pedidoActivity extends menuActivity implements AdapterView.OnItemSe
         // TODO Auto-generated method stub
     }
 
-    public void registrarPedido(View V) {
-
-        Intent intent = new Intent(this, mainActivity.class);
-
-        startActivity(intent);
-
-        Toast.makeText(pedidoActivity.this, "Pedido efetuado com sucesso", Toast.LENGTH_SHORT).show();
-
-    }
 }

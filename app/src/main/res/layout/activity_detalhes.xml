@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pedidoActivity"
+    tools:context=".detalhesActivity">
     tools:layout_editor_absoluteY="25dp">
 
     <LinearLayout
@@ -41,7 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:text="Jair Bolsonaro" />
         </LinearLayout>
 
         <LinearLayout
@@ -201,16 +202,5 @@
         </LinearLayout>
 
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="125dp"
-            android:layout_marginTop="40dp"
-            android:background="?attr/actionModeSplitBackground"
-            android:onClick="registrarPedido"
-            android:text="Enviar"
-            android:textAlignment="center"
-            android:textColor="@android:color/background_light" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pedidoActivity"
-    tools:layout_editor_absoluteY="25dp">
-
+    tools:context=".dadosActivity">
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="368dp"
@@ -41,7 +39,58 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:text="Fulano Beutrano"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="152dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="Genêro:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/genero"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioFem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Feminino"
+                        android:onClick="onRadioButtonClicked" />
+
+                    <RadioButton
+                        android:id="@+id/radioMasc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Masculino"
+                        android:onClick="onRadioButtonClicked" />
+                </LinearLayout>
+            </RadioGroup>
+
         </LinearLayout>
 
         <LinearLayout
@@ -78,7 +127,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Hospital:"
+                android:text="Email:"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -89,7 +138,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="text" />
+                android:inputType="textEmailAddress"
+                android:text="fubeu@bol.com.br" />
         </LinearLayout>
 
         <LinearLayout
@@ -99,11 +149,11 @@
 
             <TextView
                 android:id="@+id/textView5"
-                android:layout_width="15dp"
+                android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Endereço:"
+                android:text="Telefone:"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -114,32 +164,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="text" />
+                android:inputType="phone"
+                android:text="(55)3313-3313"
+                android:textSize="18sp" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Quarto:"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
@@ -164,7 +192,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:text="Santo Ângelo" />
 
         </LinearLayout>
 
@@ -194,23 +223,61 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="59dp"
             android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="Última doação:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
+            <EditText
+                android:id="@+id/editText10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="date"
+                android:text="10/10/2010" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="125dp"
+                android:layout_marginTop="10dp"
+                android:background="?attr/actionModeSplitBackground"
+                android:onClick="trocarSenha"
+                android:text="Mudar senha"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="125dp"
+                android:layout_marginTop="10dp"
+                android:background="?attr/actionModeSplitBackground"
+                android:onClick="editarDados"
+                android:text="Salvar"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light" />
         </LinearLayout>
 
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="125dp"
-            android:layout_marginTop="40dp"
-            android:background="?attr/actionModeSplitBackground"
-            android:onClick="registrarPedido"
-            android:text="Enviar"
-            android:textAlignment="center"
-            android:textColor="@android:color/background_light" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

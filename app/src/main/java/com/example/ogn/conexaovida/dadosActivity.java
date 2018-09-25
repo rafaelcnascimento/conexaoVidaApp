@@ -6,18 +6,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class pedidoActivity extends menuActivity implements AdapterView.OnItemSelectedListener {
+public class dadosActivity extends menuActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedido);
+        setContentView(R.layout.activity_dados);
+
+        //marca o butao
+        RadioButton rMasc = (RadioButton) this.findViewById(R.id.radioMasc);
+
+        rMasc.setChecked(true);
 
         // Spinner element
         Spinner spinnerSangue = (Spinner) findViewById(R.id.spinnerSangue);
@@ -43,6 +49,10 @@ public class pedidoActivity extends menuActivity implements AdapterView.OnItemSe
 
         // attaching data adapter to spinner
         spinnerSangue.setAdapter(dataAdapter);
+
+        int pos = 4;
+
+        spinnerSangue.setSelection(pos);
 
         // Spinner element
         Spinner spinnerEstado = (Spinner) findViewById(R.id.spinnerEstado);
@@ -71,20 +81,24 @@ public class pedidoActivity extends menuActivity implements AdapterView.OnItemSe
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
-
     }
 
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
 
-    public void registrarPedido(View V) {
-
-        Intent intent = new Intent(this, mainActivity.class);
+    public void editarDados(View v) {
+        Intent intent = new Intent(this, dadosActivity.class);
 
         startActivity(intent);
 
-        Toast.makeText(pedidoActivity.this, "Pedido efetuado com sucesso", Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(dadosActivity.this, "Informações modificadas com sucesso", Toast.LENGTH_SHORT).show();
     }
+
+    public void trocarSenha(View v) {
+        Intent intent = new Intent(this, senhaActivity.class);
+
+        startActivity(intent);
+    }
+
 }

@@ -64,6 +64,8 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
 
         // attaching data adapter to spinner
         spinnerEstado.setAdapter(dataAdapter2);
+
+
     }
 
 
