@@ -12,6 +12,9 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +24,7 @@ import java.util.List;
 public class cadastroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public int tipo_sanguineo_id;
+    public String genero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +118,7 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
     }
 
 
-    public void cadastrar (View v) {
+    public void cadastrar (View v) throws JSONException {
         Date us;
         EditText nomeEt = this.findViewById(R.id.nomeText);
         EditText emailEt = this.findViewById(R.id.emailText);
@@ -125,6 +129,10 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
         EditText ultima_doacaoEt = this.findViewById(R.id.ultimaDoacaoText);
 
         String nome = nomeEt.getText().toString();
+        String email = emailEt.getText().toString();
+        String telefone = telefoneEt.getText().toString();
+        String cidade = cidadeEt.getText().toString();
+        String senha = senhaEt.getText().toString();
         String ultima_doacao = ultima_doacaoEt.getText().toString();
 
         try {
@@ -139,8 +147,21 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
 //
 //        //Validar(....)
 
-        Log.d("nome: ",nome);
-        Log.d("dia: ",ultima_doacao);
+        JSONObject jason = new JSONObject();
+
+        jason.put("nome",nome);
+        jason.put("email",email);
+        jason.put("telefone",telefone);
+        jason.put("senha",senha);
+        jason.put("genero",genero);
+        jason.put("cidade",cidade);
+        jason.put("ultima_doacao",ultima_doacao);
+        jason.put("tipo_sanguineo_id",tipo_sanguineo_id);
+
+        user.cadastar(jason);
+
+//      Log.d("nome: ",nome);
+//      Log.d("dia: ",ultima_doacao);
 
         Intent intent = new Intent(this, loginActivity.class);
 
@@ -161,10 +182,12 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
             case R.id.radioMasc:
                 if (checked)
                     rFem.setChecked(false);
+                    genero = "Masculino";
                 break;
             case R.id.radioFem:
                 if (checked)
                     rMasc.setChecked(false);
+                    genero = "Feminino";
                 break;
         }
     }
