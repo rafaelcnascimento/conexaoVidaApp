@@ -14,6 +14,8 @@ public class loginActivity extends AppCompatActivity {
     }
 
     public void logar(View v) {
+
+
         Intent intent = new Intent(this, mainActivity.class);
 
         startActivity(intent);

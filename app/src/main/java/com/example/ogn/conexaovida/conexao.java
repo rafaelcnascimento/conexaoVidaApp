@@ -26,11 +26,6 @@ public class conexao extends AsyncTask<Object, Void, Object> {
 
     @Override
     protected Object doInBackground(Object... objects) {
-        try {
-            Log.d("genero",jason.getString("genero"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
         URL url;
         HttpURLConnection urlConnection = null;
@@ -41,23 +36,20 @@ public class conexao extends AsyncTask<Object, Void, Object> {
 
             urlConnection = (HttpURLConnection) url.openConnection();
 
-            urlConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-            urlConnection.setRequestProperty("Accept","application/json");
-            urlConnection.setRequestMethod("POST");
-            urlConnection.setDoOutput(true);
-            urlConnection.setDoInput(true);
+            if (enviar){
+                urlConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                urlConnection.setRequestProperty("Accept","application/json");
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setDoOutput(true);
+                urlConnection.setDoInput(true);
 
+                DataOutputStream os = new DataOutputStream(urlConnection.getOutputStream());
+                //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
+                os.writeBytes(jason.toString());
 
-            DataOutputStream os = new DataOutputStream(urlConnection.getOutputStream());
-            //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
-            os.writeBytes(jason.toString());
-
-            os.flush();
-            os.close();
-
-            Log.i("LOCOLOCO", String.valueOf(urlConnection.getResponseCode()));
-            Log.i("MSGMSGMSG" , urlConnection.getResponseMessage());
-
+                os.flush();
+                os.close();
+            }
 
             InputStream in = urlConnection.getInputStream();
 

@@ -160,9 +160,6 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
 
         user.cadastar(jason);
 
-//      Log.d("nome: ",nome);
-//      Log.d("dia: ",ultima_doacao);
-
         Intent intent = new Intent(this, loginActivity.class);
 
         startActivity(intent);
