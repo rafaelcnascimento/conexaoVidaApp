@@ -17,11 +17,13 @@ public class conexao extends AsyncTask<Object, Void, Object> {
     private JSONObject jason;
     private String endpoint;
     private boolean enviar;
+    private String token;
 
-    conexao(String endpoint, JSONObject jason, boolean enviar){
+    conexao(String endpoint, JSONObject jason, boolean enviar, String token){
         this.jason = jason;
         this.endpoint = endpoint;
         this.enviar = enviar;
+        this.token = token;
     }
 
     @Override
@@ -32,6 +34,7 @@ public class conexao extends AsyncTask<Object, Void, Object> {
 
         String r = new String();
         try {
+
             url = new URL("http://10.0.2.2:80//api/" + endpoint);
 
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -39,13 +42,14 @@ public class conexao extends AsyncTask<Object, Void, Object> {
             if (enviar){
                 urlConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
                 urlConnection.setRequestProperty("Accept","application/json");
+                urlConnection.setRequestProperty("Authorization","Bearer"+token);
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setDoOutput(true);
                 urlConnection.setDoInput(true);
 
                 DataOutputStream os = new DataOutputStream(urlConnection.getOutputStream());
                 //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
-                os.writeBytes(jason.toString());
+//                os.writeBytes(jason.toString());
 
                 os.flush();
                 os.close();
