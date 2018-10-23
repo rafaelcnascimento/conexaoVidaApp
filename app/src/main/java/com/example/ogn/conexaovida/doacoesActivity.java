@@ -18,20 +18,18 @@ public class doacoesActivity extends menuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doacoes);
 
+        String lista = null;
+
 //        tabelaDoacoes t1 = (tabelaDoacoes) getSupportFragmentManager().findFragmentById(R.id.fragment);
 //        t1.setDados("Jair Bolsonaro","O+");
 //
 //        tabelaDoacoes t2 = (tabelaDoacoes) getSupportFragmentManager().findFragmentById(R.id.fragment2);
 //        t2.setDados("Alexei Nikolaevich","AB-");
 
-        String lista = null;
+
         try {
              lista  = pedido.getPedidos();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (ExecutionException | JSONException | InterruptedException e) {
             e.printStackTrace();
         }
 

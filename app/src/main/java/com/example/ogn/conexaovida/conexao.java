@@ -41,7 +41,10 @@ public class conexao extends AsyncTask<Object, Void, Object> {
 
             urlConnection.setRequestProperty("Content-Type", "application/json");
             urlConnection.setRequestProperty("Accept","application/json");
-            urlConnection.setRequestProperty("Authorization","Bearer "+token);
+
+            if (token != null){
+                urlConnection.setRequestProperty("Authorization","Bearer "+token);
+            }
 
             if (enviar){
                 urlConnection.setRequestMethod("POST");
