@@ -20,10 +20,10 @@ public class loginActivity extends AppCompatActivity {
     public void logar(View v) throws JSONException {
 
         EditText emailEt = this.findViewById(R.id.emailText);
-        EditText senhaEt = this.findViewById(R.id.senhaText);
+        EditText passwordEt = this.findViewById(R.id.senhaText);
 
         String email = emailEt.getText().toString();
-        String senha = senhaEt.getText().toString();
+        String senha = passwordEt.getText().toString();
 
         user.login(email,senha);
 

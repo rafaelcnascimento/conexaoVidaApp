@@ -56,7 +56,7 @@ public class conexao extends AsyncTask<Object, Void, Object> {
                 os.close();
             }
 
-            Log.d("FUCK","a: " + urlConnection.getResponseCode());
+            Log.d("Resposta","" + urlConnection.getResponseCode());
 
             InputStream in = urlConnection.getInputStream();
 

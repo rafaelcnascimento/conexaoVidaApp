@@ -16,15 +16,17 @@ public class user {
         c.execute();
     }
 
-    public static void login(String email,String senha) throws JSONException {
+    public static void login(String email,String password) throws JSONException {
 
         JSONObject jason = new JSONObject();
 
         jason.put("email",email);
-        jason.put("senha",senha);
+        jason.put("password",password);
 
         conexao c = new conexao("login",jason, true,null);
         String dados = c.execute().toString();
+
+        Log.d("etc", "blarbblarb");
 
         Log.d("Dados", dados);
     }
