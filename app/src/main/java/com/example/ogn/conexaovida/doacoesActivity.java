@@ -26,7 +26,7 @@ public class doacoesActivity extends menuActivity {
 
         String lista = null;
         try {
-             lista  = user.getDoacoes();
+             lista  = pedido.getPedidos();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

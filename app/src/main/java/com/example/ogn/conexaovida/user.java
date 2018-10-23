@@ -16,18 +16,4 @@ public class user {
         c.execute();
     }
 
-    public static String getDoacoes() throws ExecutionException, InterruptedException, JSONException {
-        String token = "U3y4o7TFBgnjYflevisR5xdHKvWEsoVCZ2Jmy5hg5mJDm8rJHwSmLczHl6ji";
-
-        JSONObject jason = new JSONObject();
-
-        jason.put("email","r_catelan@hotmail.com");
-        jason.put("password","110ftw");
-
-        conexao c = new conexao("doacoes",jason, true,token);
-
-        String lista = c.execute().get().toString();
-
-        return lista;
-    }
 }

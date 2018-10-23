@@ -35,25 +35,25 @@ public class conexao extends AsyncTask<Object, Void, Object> {
         String r = new String();
         try {
 
-            url = new URL("http://10.0.2.2:80//api/" + endpoint);
+            url = new URL("http://10.0.2.2:80/api/" + endpoint);
 
             urlConnection = (HttpURLConnection) url.openConnection();
 
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("Accept","application/json");
+            urlConnection.setRequestProperty("Authorization","Bearer "+token);
+
             if (enviar){
-                urlConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                urlConnection.setRequestProperty("Accept","application/json");
-                urlConnection.setRequestProperty("Authorization","Bearer"+token);
                 urlConnection.setRequestMethod("POST");
-                urlConnection.setDoOutput(true);
-                urlConnection.setDoInput(true);
 
                 DataOutputStream os = new DataOutputStream(urlConnection.getOutputStream());
-                //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
-//                os.writeBytes(jason.toString());
 
+                os.writeBytes(jason.toString());
                 os.flush();
                 os.close();
             }
+
+            Log.d("FUCK","a: " + urlConnection.getResponseCode());
 
             InputStream in = urlConnection.getInputStream();
 
