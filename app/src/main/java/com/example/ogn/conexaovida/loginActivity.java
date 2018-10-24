@@ -9,6 +9,8 @@ import android.widget.EditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.ExecutionException;
+
 public class loginActivity extends AppCompatActivity {
 
     @Override
@@ -17,7 +19,7 @@ public class loginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    public void logar(View v) throws JSONException {
+    public void logar(View v) throws JSONException, ExecutionException, InterruptedException {
 
         EditText emailEt = this.findViewById(R.id.emailText);
         EditText passwordEt = this.findViewById(R.id.senhaText);

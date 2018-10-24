@@ -1,14 +1,23 @@
 package com.example.ogn.conexaovida;
 
+import android.content.SharedPreferences;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class pedido {
 
+    public static SharedPreferences user;
+
+
     public static String getPedidos() throws ExecutionException, InterruptedException, JSONException {
-        String token = "ogqIDoLI6vxgNLewcffLgahxbefSzcvyqmCcUWpft31DVkO9NuKEcjuzsOby";
+
+
+        String token = user.getString("api_token",null);
 
         JSONObject jason = new JSONObject();
 
