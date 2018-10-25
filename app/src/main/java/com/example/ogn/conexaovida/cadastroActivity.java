@@ -126,24 +126,12 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
         EditText cidadeEt = this.findViewById(R.id.cidadeText);
         EditText senhaEt = this.findViewById(R.id.senhaText);
         //String confirmarSenhaEt = this.findViewById(R.id.confirmarSenhaText);
-        EditText ultima_doacaoEt = this.findViewById(R.id.ultimaDoacaoText);
 
         String nome = nomeEt.getText().toString();
         String email = emailEt.getText().toString();
         String telefone = telefoneEt.getText().toString();
         String cidade = cidadeEt.getText().toString();
         String senha = senhaEt.getText().toString();
-        String ultima_doacao = ultima_doacaoEt.getText().toString();
-
-        try {
-            SimpleDateFormat sql = new SimpleDateFormat("yyyy-MM-dd");
-            SimpleDateFormat brasil = new SimpleDateFormat("dd/MM/yyyy");
-            us = brasil.parse(ultima_doacao);
-            ultima_doacao = sql.format(us);
-
-        } catch (java.text.ParseException e) {
-            e.printStackTrace();
-        }
 //
 //        //Validar(....)
 
@@ -155,7 +143,6 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
         jason.put("senha",senha);
         jason.put("genero",genero);
         jason.put("cidade",cidade);
-        jason.put("ultima_doacao",ultima_doacao);
         jason.put("tipo_sanguineo_id",tipo_sanguineo_id);
 
         user.cadastar(jason);

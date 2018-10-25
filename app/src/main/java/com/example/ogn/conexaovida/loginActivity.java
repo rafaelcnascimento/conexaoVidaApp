@@ -1,8 +1,10 @@
 package com.example.ogn.conexaovida;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -27,10 +29,13 @@ public class loginActivity extends AppCompatActivity {
         String email = emailEt.getText().toString();
         String senha = passwordEt.getText().toString();
 
-        user.login(email,senha);
+        Context context = this;
+
+        user.login(email,senha,context);
 
         Intent intent = new Intent(this, mainActivity.class);
 
         startActivity(intent);
     }
+
 }
