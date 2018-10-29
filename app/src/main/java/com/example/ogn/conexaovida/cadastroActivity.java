@@ -24,7 +24,6 @@ import java.util.List;
 public class cadastroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public int tipo_sanguineo_id;
-    public String genero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +118,6 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
 
 
     public void cadastrar (View v) throws JSONException {
-        Date us;
         EditText nomeEt = this.findViewById(R.id.nomeText);
         EditText emailEt = this.findViewById(R.id.emailText);
         EditText telefoneEt = this.findViewById(R.id.telefoneText);
@@ -131,7 +129,7 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
         String email = emailEt.getText().toString();
         String telefone = telefoneEt.getText().toString();
         String cidade = cidadeEt.getText().toString();
-        String senha = senhaEt.getText().toString();
+        String password = senhaEt.getText().toString();
 //
 //        //Validar(....)
 
@@ -140,8 +138,7 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
         jason.put("nome",nome);
         jason.put("email",email);
         jason.put("telefone",telefone);
-        jason.put("senha",senha);
-        jason.put("genero",genero);
+        jason.put("password",password);
         jason.put("cidade",cidade);
         jason.put("tipo_sanguineo_id",tipo_sanguineo_id);
 
@@ -154,26 +151,4 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
         Toast.makeText(cadastroActivity.this, "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
 
     }
-
-    public void onRadioButtonClicked(View v) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) v).isChecked();
-
-        RadioButton rMasc = (RadioButton) this.findViewById(R.id.radioMasc);
-        RadioButton rFem = (RadioButton) this.findViewById(R.id.radioFem);
-
-        switch(v.getId()) {
-            case R.id.radioMasc:
-                if (checked)
-                    rFem.setChecked(false);
-                    genero = "Masculino";
-                break;
-            case R.id.radioFem:
-                if (checked)
-                    rMasc.setChecked(false);
-                    genero = "Feminino";
-                break;
-        }
-    }
-
 }

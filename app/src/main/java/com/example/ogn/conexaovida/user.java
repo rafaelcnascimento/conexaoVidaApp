@@ -47,7 +47,6 @@ public class user {
         editor.putString("nome",jason_dados.getString("nome"));
         editor.putString("email",jason_dados.getString("email"));
         editor.putString("telefone",jason_dados.getString("telefone"));
-        editor.putString("genero",jason_dados.getString("genero"));
         editor.putString("cidade",jason_dados.getString("cidade"));
         editor.putString("tipo_sanguineo_id",jason_dados.getString("tipo_sanguineo_id"));
         editor.putString("estado_id",jason_dados.getString("estado_id"));

@@ -20,11 +20,6 @@ public class dadosActivity extends menuActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados);
 
-        //marca o butao
-        RadioButton rMasc = (RadioButton) this.findViewById(R.id.radioMasc);
-
-        rMasc.setChecked(true);
-
         // Spinner element
         Spinner spinnerSangue = (Spinner) findViewById(R.id.spinnerSangue);
 
