@@ -30,29 +30,42 @@ public class user {
 
         conexao c = new conexao("login",jason, true,null);
 
-        user.setDados(c.execute().get().toString(),context);
-    }
-
-    public static void setDados(String dados, Context context) throws JSONException {
+        String dados = c.execute().get().toString();
 
         JSONObject jason_dados = new JSONObject(dados);
 
-        //Log.d("Dados: ", jason_dados.toString());
+        setDado(context,"id",jason_dados.getString("id"));
+        setDado(context,"nome",jason_dados.getString("nome"));
+        setDado(context,"email",jason_dados.getString("email"));
+        setDado(context,"telefone",jason_dados.getString("telefone"));
+        setDado(context,"cidade",jason_dados.getString("cidade"));
+        setDado(context,"tipo_sanguineo_id",jason_dados.getString("tipo_sanguineo_id"));
+        setDado(context,"estado_id",jason_dados.getString("estado_id"));
+        setDado(context,"api_token",jason_dados.getString("api_token"));
+    }
+
+    public static void atualizar(Context context, JSONObject jason) throws ExecutionException, InterruptedException, JSONException {
+
+        conexao c = new conexao("user/"+getDado(context,"id"),jason, true, getDado(context,"api_token"));
+
+        c.execute();
+
+        setDado(context,"nome",jason.getString("nome"));
+        setDado(context,"email",jason.getString("email"));
+        setDado(context,"telefone",jason.getString("telefone"));
+        setDado(context,"cidade",jason.getString("cidade"));
+        setDado(context,"tipo_sanguineo_id",jason.getString("tipo_sanguineo_id"));
+    }
+
+    public static void setDado(Context context, String key, String value) {
 
         SharedPreferences prefs = context.getSharedPreferences("dadoUsers", MODE_PRIVATE);
 
         SharedPreferences.Editor editor = prefs.edit();
 
-        editor.putString("id",jason_dados.getString("id"));
-        editor.putString("nome",jason_dados.getString("nome"));
-        editor.putString("email",jason_dados.getString("email"));
-        editor.putString("telefone",jason_dados.getString("telefone"));
-        editor.putString("cidade",jason_dados.getString("cidade"));
-        editor.putString("tipo_sanguineo_id",jason_dados.getString("tipo_sanguineo_id"));
-        editor.putString("estado_id",jason_dados.getString("estado_id"));
-        editor.putString("api_token",jason_dados.getString("api_token"));
+        editor.putString(key,value);
 
-        editor.apply();
+        editor.commit();
     }
 
     public static String getDado(Context context, String key) {

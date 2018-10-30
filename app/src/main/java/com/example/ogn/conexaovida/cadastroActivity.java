@@ -37,14 +37,15 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
 
         // Spinner Drop down elements
         List<String> tipos = new ArrayList<String>();
+        tipos.add("O+");
+        tipos.add("O-");
         tipos.add("A+");
         tipos.add("A-");
         tipos.add("B+");
         tipos.add("B-");
         tipos.add("AB+");
         tipos.add("AB-");
-        tipos.add("O+");
-        tipos.add("O-");
+
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tipos);
 
