@@ -1,18 +1,25 @@
 package com.example.ogn.conexaovida;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class pedidoActivity extends menuActivity implements AdapterView.OnItemSelectedListener {
+
+    public int tipo_sanguineo_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,27 +50,6 @@ public class pedidoActivity extends menuActivity implements AdapterView.OnItemSe
 
         // attaching data adapter to spinner
         spinnerSangue.setAdapter(dataAdapter);
-
-        // Spinner element
-        Spinner spinnerEstado = (Spinner) findViewById(R.id.spinnerEstado);
-
-        // Spinner click listener
-        spinnerEstado.setOnItemSelectedListener(this);
-
-        // Spinner Drop down elements
-        List<String> estados = new ArrayList<String>();
-        estados.add("Rio Grande do Sul - RS");
-        estados.add("Santa Catarina - SC");
-        estados.add("Paraná - PR");
-
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, estados);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
-        spinnerEstado.setAdapter(dataAdapter2);
     }
 
 
@@ -72,13 +58,68 @@ public class pedidoActivity extends menuActivity implements AdapterView.OnItemSe
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
 
+        switch (item) {
+            case "O+":
+                tipo_sanguineo_id = 1;
+                break;
+            case "O-":
+                tipo_sanguineo_id = 2;
+                break;
+            case "A+":
+                tipo_sanguineo_id = 3;
+                break;
+            case "A-":
+                tipo_sanguineo_id = 4;
+                break;
+            case "B+":
+                tipo_sanguineo_id = 5;
+                break;
+            case "B-":
+                tipo_sanguineo_id = 6;
+                break;
+            case "AB+":
+                tipo_sanguineo_id = 7;
+                break;
+            case "AB-":
+                tipo_sanguineo_id = 8;
+                break;
+        }
     }
+
 
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
 
-    public void registrarPedido(View V) {
+    public void registrarPedido(View V) throws JSONException {
+        Context context = this;
+
+        EditText nomeEt = this.findViewById(R.id.nomeText);
+        EditText hospitalEt = this.findViewById(R.id.hospitalText);
+        EditText enderecoEt = this.findViewById(R.id.enderecoText);
+        EditText quartoEt = this.findViewById(R.id.quartoText);
+        EditText cidadeEt = this.findViewById(R.id.cidadeText);
+
+        String paciente = nomeEt.getText().toString();
+        String hospital = hospitalEt.getText().toString();
+        String endereco_hospital = enderecoEt.getText().toString();
+        String quarto = quartoEt.getText().toString();
+        String cidade = cidadeEt.getText().toString();
+
+//
+//        //Validar(....)
+
+        JSONObject jason = new JSONObject();
+
+        jason.put("paciente",paciente);
+        jason.put("hospital",hospital);
+        jason.put("endereco_hospital",endereco_hospital);
+        jason.put("quarto",quarto);
+        jason.put("cidade",cidade);
+        jason.put("tipo_sanguineo_id",tipo_sanguineo_id);
+        jason.put("user_id",user.getDado(context,"id"));
+
+        pedido.cadastar(context,jason);
 
         Intent intent = new Intent(this, mainActivity.class);
 

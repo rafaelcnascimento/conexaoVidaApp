@@ -35,7 +35,11 @@ public class conexao extends AsyncTask<Object, Void, Object> {
         String r = new String();
         try {
 
-            Log.d("Dados", jason.toString());
+           try {
+               Log.d("Dados", jason.toString());
+           } catch (Exception e){
+
+           }
 
             url = new URL("http://10.0.2.2:80/api/" + endpoint);
 

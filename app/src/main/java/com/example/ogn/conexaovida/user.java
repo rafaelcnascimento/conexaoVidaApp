@@ -44,7 +44,7 @@ public class user {
         setDado(context,"api_token",jason_dados.getString("api_token"));
     }
 
-    public static void atualizar(Context context, JSONObject jason) throws ExecutionException, InterruptedException, JSONException {
+    public static void atualizar(Context context, JSONObject jason) throws JSONException {
 
         conexao c = new conexao("user/"+getDado(context,"id"),jason, true, getDado(context,"api_token"));
 

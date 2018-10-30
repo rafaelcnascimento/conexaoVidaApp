@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutionException;
 
 public class dadosActivity extends menuActivity implements AdapterView.OnItemSelectedListener {
 
+    public int novo_ts = 0;
     public Context context = this;
 
     @Override
@@ -49,32 +50,32 @@ public class dadosActivity extends menuActivity implements AdapterView.OnItemSel
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
 
-//        switch (item) {
-//            case "O+":
-//                tipo_sanguineo_id = 1;
-//                break;
-//            case "O-":
-//                tipo_sanguineo_id = 2;
-//                break;
-//            case "A+":
-//                tipo_sanguineo_id = 3;
-//                break;
-//            case "A-":
-//                tipo_sanguineo_id = 4;
-//                break;
-//            case "B+":
-//                tipo_sanguineo_id = 5;
-//                break;
-//            case "B-":
-//                tipo_sanguineo_id = 6;
-//                break;
-//            case "AB+":
-//                tipo_sanguineo_id = 7;
-//                break;
-//            case "AB-":
-//                tipo_sanguineo_id = 8;
-//                break;
-//        }
+        switch (item) {
+            case "O+":
+                novo_ts = 1;
+                break;
+            case "O-":
+                novo_ts = 2;
+                break;
+            case "A+":
+                novo_ts = 3;
+                break;
+            case "A-":
+                novo_ts = 4;
+                break;
+            case "B+":
+                novo_ts = 5;
+                break;
+            case "B-":
+                novo_ts = 6;
+                break;
+            case "AB+":
+                novo_ts = 7;
+                break;
+            case "AB-":
+                novo_ts = 8;
+                break;
+        }
     }
 
     public void onNothingSelected(AdapterView<?> arg0) {
@@ -100,7 +101,12 @@ public class dadosActivity extends menuActivity implements AdapterView.OnItemSel
         jason.put("email",email);
         jason.put("telefone",telefone);
         jason.put("cidade",cidade);
-        jason.put("tipo_sanguineo_id",user.getDado(context,"tipo_sanguineo_id"));
+
+        if (novo_ts == 0) {
+            jason.put("tipo_sanguineo_id",user.getDado(context,"tipo_sanguineo_id"));
+        } else {
+            jason.put("tipo_sanguineo_id",novo_ts);
+        }
 
         user.atualizar(context,jason);
 

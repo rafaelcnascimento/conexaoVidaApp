@@ -1,5 +1,6 @@
 package com.example.ogn.conexaovida;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,8 @@ public class doacoesActivity extends menuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doacoes);
 
+        Context context = this;
+
         String lista = null;
 
 //        tabelaDoacoes t1 = (tabelaDoacoes) getSupportFragmentManager().findFragmentById(R.id.fragment);
@@ -28,7 +31,7 @@ public class doacoesActivity extends menuActivity {
 
 
         try {
-             lista  = pedido.getPedidos();
+             lista  = pedido.getPedidos(context);
         } catch (ExecutionException | JSONException | InterruptedException e) {
             e.printStackTrace();
         }

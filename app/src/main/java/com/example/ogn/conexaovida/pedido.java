@@ -1,5 +1,6 @@
 package com.example.ogn.conexaovida;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import org.json.JSONException;
@@ -11,20 +12,15 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class pedido {
 
-    public static SharedPreferences user;
+    public static void cadastar(Context context, JSONObject jason){
 
+        conexao c = new conexao("doacao", jason, true,user.getDado(context,"api_token"));
+        c.execute();
+    }
 
-    public static String getPedidos() throws ExecutionException, InterruptedException, JSONException {
+    public static String getPedidos(Context context) throws ExecutionException, InterruptedException, JSONException {
 
-
-        String token = user.getString("api_token",null);
-
-        JSONObject jason = new JSONObject();
-
-        jason.put("email","r_catelan@hotmail.com");
-        jason.put("password","110ftw");
-
-        conexao c = new conexao("doacoes",jason, false, token);
+        conexao c = new conexao("doacoes",null, false, user.getDado(context,"api_token"));
 
         String lista = c.execute().get().toString();
 
