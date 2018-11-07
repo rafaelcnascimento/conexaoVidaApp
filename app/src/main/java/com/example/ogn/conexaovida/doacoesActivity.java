@@ -14,38 +14,42 @@ import java.util.concurrent.ExecutionException;
 
 public class doacoesActivity extends menuActivity {
 
+    public String pedido_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doacoes);
 
-        Context context = this;
 
         String lista = null;
 
-//        tabelaDoacoes t1 = (tabelaDoacoes) getSupportFragmentManager().findFragmentById(R.id.fragment);
-//        t1.setDados("Jair Bolsonaro","O+");
+        tabelaDoacoes t1 = (tabelaDoacoes) getSupportFragmentManager().findFragmentById(R.id.fragment);
+        t1.setDados("Jair Bolsonaro","O+","1");
 //
 //        tabelaDoacoes t2 = (tabelaDoacoes) getSupportFragmentManager().findFragmentById(R.id.fragment2);
 //        t2.setDados("Alexei Nikolaevich","AB-");
 
 
-        try {
-             lista  = pedido.getPedidos(context);
-        } catch (ExecutionException | JSONException | InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//             lista  = pedido.getPedidos(context);
+//        } catch (ExecutionException | JSONException | InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//
+//        Log.d("lmaoo",lista);
 
-        Log.d("lmaoo",lista);
+        pedido_id = t1.getPedidoId();
 
+        Log.d("lmaoo",pedido_id);
     }
 
 
-    public void detalhes(View V) {
+    public void detalhes(View V) throws ExecutionException, InterruptedException {
 
-        Intent intent = new Intent(this, detalhesActivity.class);
+        Context context = this;
 
-        startActivity(intent);
+        pedido.Show(context, pedido_id);
 
     }
 }

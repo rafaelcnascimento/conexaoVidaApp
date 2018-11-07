@@ -20,14 +20,6 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:hint="Senha atual"
-            android:inputType="textPassword" />
-
-        <EditText
             android:id="@+id/editText4"
             android:layout_width="match_parent"
             android:layout_height="50dp"

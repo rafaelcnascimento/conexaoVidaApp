@@ -1,23 +1,59 @@
 package com.example.ogn.conexaovida;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class detalhesActivity extends menuActivity implements AdapterView.OnItemSelectedListener{
+public class detalhesActivity extends menuActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes);
+
+        JSONObject jason = null;
+
+        Intent intent = getIntent();
+        String dados = intent.getStringExtra("PEDIDO");
+
+        EditText nomeEt = this.findViewById(R.id.nomeText);
+        EditText hospitalEt = this.findViewById(R.id.hospitalText);
+        EditText enderecoEt = this.findViewById(R.id.enderecoText);
+        EditText quartoEt = this.findViewById(R.id.quartoText);
+        EditText cidadeEt = this.findViewById(R.id.cidadeText);
+
+
+
+        try {
+            jason = new JSONObject(dados);
+
+            nomeEt.setText(jason.getString("paciente"));
+            hospitalEt.setText(jason.getString("hospital"));
+            enderecoEt.setText(jason.getString("endereco_hospital"));
+            quartoEt.setText(jason.getString("quarto"));
+            cidadeEt.setText(jason.getString("cidade"));
+
+            gerarSpinner(Integer.parseInt(jason.getString("tipo_sanguineo_id"))- 1);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gerarSpinner(int pos){
         // Spinner element
         Spinner spinnerSangue = (Spinner) findViewById(R.id.spinnerSangue);
 
@@ -26,14 +62,15 @@ public class detalhesActivity extends menuActivity implements AdapterView.OnItem
 
         // Spinner Drop down elements
         List<String> tipos = new ArrayList<String>();
+        tipos.add("O+");
+        tipos.add("O-");
         tipos.add("A+");
         tipos.add("A-");
         tipos.add("B+");
         tipos.add("B-");
         tipos.add("AB+");
         tipos.add("AB-");
-        tipos.add("O+");
-        tipos.add("O-");
+
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tipos);
 
@@ -43,30 +80,8 @@ public class detalhesActivity extends menuActivity implements AdapterView.OnItem
         // attaching data adapter to spinner
         spinnerSangue.setAdapter(dataAdapter);
 
-        // Spinner element
-        Spinner spinnerEstado = (Spinner) findViewById(R.id.spinnerEstado);
-
-        // Spinner click listener
-        spinnerEstado.setOnItemSelectedListener(this);
-
-        // Spinner Drop down elements
-        List<String> estados = new ArrayList<String>();
-
-        estados.add("São Paulo - SP");
-        estados.add("Rio Grande do Sul - RS");
-        estados.add("Santa Catarina - SC");
-        estados.add("Paraná - PR");
-
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, estados);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
-        spinnerEstado.setAdapter(dataAdapter2);
+        spinnerSangue.setSelection(pos);
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
