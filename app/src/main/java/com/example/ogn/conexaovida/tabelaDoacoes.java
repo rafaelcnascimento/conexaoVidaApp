@@ -4,6 +4,7 @@ import com.example.ogn.conexaovida.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,19 +21,13 @@ public class tabelaDoacoes extends Fragment {
     }
 
     public void setDados(String nome, String sangue, String id) {
-        TextView tv1 = (TextView)  getView().findViewById(R.id.textView1);
+        TextView tv1 = (TextView) getView().findViewById(R.id.textView1);
         tv1.setText(nome);
 
-        TextView tv2 = (TextView)  getView().findViewById(R.id.textView2);
+        TextView tv2 = (TextView) getView().findViewById(R.id.textView2);
         tv2.setText(sangue);
 
         Button botao = (Button) getView().findViewById(R.id.button1);
-        botao.setTag("1");
-    }
-
-    public String getPedidoId(){
-        Button botao = (Button) getView().findViewById(R.id.button1);
-
-        return botao.getTag().toString();
+        botao.setTag(id);
     }
 }

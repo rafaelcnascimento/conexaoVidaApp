@@ -1,5 +1,6 @@
 package com.example.ogn.conexaovida;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -119,37 +120,39 @@ public class cadastroActivity extends AppCompatActivity implements AdapterView.O
 
 
     public void cadastrar (View v) throws JSONException {
+        Context context = this;
+
         EditText nomeEt = this.findViewById(R.id.nomeText);
         EditText emailEt = this.findViewById(R.id.emailText);
         EditText telefoneEt = this.findViewById(R.id.telefoneText);
         EditText cidadeEt = this.findViewById(R.id.cidadeText);
         EditText senhaEt = this.findViewById(R.id.senhaText);
-        //String confirmarSenhaEt = this.findViewById(R.id.confirmarSenhaText);
+        EditText confirmarSenhaEt = this.findViewById(R.id.confirmarSenhaText);
 
         String nome = nomeEt.getText().toString();
         String email = emailEt.getText().toString();
         String telefone = telefoneEt.getText().toString();
         String cidade = cidadeEt.getText().toString();
         String password = senhaEt.getText().toString();
-//
-//        //Validar(....)
+        String confirmarSenha = confirmarSenhaEt.getText().toString();
 
-        JSONObject jason = new JSONObject();
+        if (validar.cadastroUser(context,nome,email,telefone,cidade,password,confirmarSenha)){
+            JSONObject jason = new JSONObject();
 
-        jason.put("nome",nome);
-        jason.put("email",email);
-        jason.put("telefone",telefone);
-        jason.put("password",password);
-        jason.put("cidade",cidade);
-        jason.put("tipo_sanguineo_id",tipo_sanguineo_id);
+            jason.put("nome",nome);
+            jason.put("email",email);
+            jason.put("telefone",telefone);
+            jason.put("password",password);
+            jason.put("cidade",cidade);
+            jason.put("tipo_sanguineo_id",tipo_sanguineo_id);
 
-        user.cadastar(jason);
+            user.cadastar(jason);
 
-        Intent intent = new Intent(this, loginActivity.class);
+            Intent intent = new Intent(this, loginActivity.class);
 
-        startActivity(intent);
+            startActivity(intent);
 
-        Toast.makeText(cadastroActivity.this, "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(cadastroActivity.this, "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
+        }
     }
 }

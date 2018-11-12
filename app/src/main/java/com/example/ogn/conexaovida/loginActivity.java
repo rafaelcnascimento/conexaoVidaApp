@@ -32,10 +32,6 @@ public class loginActivity extends AppCompatActivity {
         Context context = this;
 
         user.login(email,senha,context);
-
-        Intent intent = new Intent(this, mainActivity.class);
-
-        startActivity(intent);
     }
 
 }

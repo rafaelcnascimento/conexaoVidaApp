@@ -43,6 +43,8 @@ public class conexao extends AsyncTask<Object, Void, Object> {
 
             url = new URL("http://10.0.2.2:80/api/" + endpoint);
 
+            Log.d("Dados", url.toString());
+
             urlConnection = (HttpURLConnection) url.openConnection();
 
             urlConnection.setRequestProperty("Content-Type", "application/json");

@@ -1,9 +1,11 @@
 package com.example.ogn.conexaovida;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,16 +34,31 @@ public class user {
 
         String dados = c.execute().get().toString();
 
-        JSONObject jason_dados = new JSONObject(dados);
+        Log.d("lool",dados);
 
-        setDado(context,"id",jason_dados.getString("id"));
-        setDado(context,"nome",jason_dados.getString("nome"));
-        setDado(context,"email",jason_dados.getString("email"));
-        setDado(context,"telefone",jason_dados.getString("telefone"));
-        setDado(context,"cidade",jason_dados.getString("cidade"));
-        setDado(context,"tipo_sanguineo_id",jason_dados.getString("tipo_sanguineo_id"));
-        setDado(context,"estado_id",jason_dados.getString("estado_id"));
-        setDado(context,"api_token",jason_dados.getString("api_token"));
+        if (dados.equals("404")){
+            Toast.makeText(context, "Credenciais inválidas", Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                JSONObject jason_dados = new JSONObject(dados);
+
+                setDado(context,"id",jason_dados.getString("id"));
+                setDado(context,"nome",jason_dados.getString("nome"));
+                setDado(context,"email",jason_dados.getString("email"));
+                setDado(context,"telefone",jason_dados.getString("telefone"));
+                setDado(context,"cidade",jason_dados.getString("cidade"));
+                setDado(context,"tipo_sanguineo_id",jason_dados.getString("tipo_sanguineo_id"));
+                setDado(context,"estado_id",jason_dados.getString("estado_id"));
+                setDado(context,"api_token",jason_dados.getString("api_token"));
+
+                Intent intent = new Intent(context, doacoesActivity.class);
+
+                context.startActivity(intent);
+
+            } catch (JSONException E) {
+                Toast.makeText(context, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     public static void atualizar(Context context, JSONObject jason) throws JSONException {
