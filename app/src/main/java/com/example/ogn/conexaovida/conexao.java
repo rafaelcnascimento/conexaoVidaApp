@@ -47,8 +47,9 @@ public class conexao extends AsyncTask<Object, Void, Object> {
 
             urlConnection = (HttpURLConnection) url.openConnection();
 
-            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             urlConnection.setRequestProperty("Accept","application/json");
+            urlConnection.setRequestProperty("Accept-Charset", "UTF-8");
 
             if (token != null){
                 urlConnection.setRequestProperty("Authorization","Bearer "+token);

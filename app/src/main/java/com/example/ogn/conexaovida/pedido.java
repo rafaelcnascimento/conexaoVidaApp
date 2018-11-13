@@ -43,4 +43,38 @@ public class pedido {
 
         context.startActivity(intent);
     }
+
+    public static String getSangue (String id){
+
+        String sangue = null;
+
+        switch (id) {
+            case "1":
+                sangue = "O+";
+                break;
+            case "2":
+                sangue = "O-";
+                break;
+            case "3":
+                sangue = "A+";
+                break;
+            case "4":
+                sangue = "A-";
+                break;
+            case "5":
+                sangue = "B+";
+                break;
+            case "6":
+                sangue = "B-";
+                break;
+            case "7":
+                sangue = "AB+";
+                break;
+            case "8":
+                sangue = "AB-";
+                break;
+        }
+
+        return sangue;
+    }
 }

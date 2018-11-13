@@ -34,8 +34,6 @@ public class user {
 
         String dados = c.execute().get().toString();
 
-        Log.d("lool",dados);
-
         if (dados.equals("404")){
             Toast.makeText(context, "Credenciais inválidas", Toast.LENGTH_SHORT).show();
         } else {
@@ -74,7 +72,7 @@ public class user {
         setDado(context,"tipo_sanguineo_id",jason.getString("tipo_sanguineo_id"));
     }
 
-    public static void setDado(Context context, String key, String value) {
+    private static void setDado(Context context, String key, String value) {
 
         SharedPreferences prefs = context.getSharedPreferences("dadoUsers", MODE_PRIVATE);
 
@@ -82,7 +80,7 @@ public class user {
 
         editor.putString(key,value);
 
-        editor.commit();
+        editor.apply();
     }
 
     public static String getDado(Context context, String key) {
@@ -92,5 +90,12 @@ public class user {
         String dado = prefs.getString(key, "");
 
         return dado;
+    }
+
+    public static String getNome(String nomeCompleto){
+
+        String[] nome = nomeCompleto.split("\\s+");
+
+        return nome[0];
     }
 }
