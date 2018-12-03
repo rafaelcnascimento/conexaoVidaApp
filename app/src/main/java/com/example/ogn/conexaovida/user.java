@@ -46,7 +46,7 @@ public class user {
                 setDado(context,"telefone",jason_dados.getString("telefone"));
                 setDado(context,"cidade",jason_dados.getString("cidade"));
                 setDado(context,"tipo_sanguineo_id",jason_dados.getString("tipo_sanguineo_id"));
-                setDado(context,"estado_id",jason_dados.getString("estado_id"));
+                setDado(context,"regiao_id",jason_dados.getString("regiao_id"));
                 setDado(context,"api_token",jason_dados.getString("api_token"));
 
                 Intent intent = new Intent(context, doacoesActivity.class);
@@ -70,6 +70,7 @@ public class user {
         setDado(context,"telefone",jason.getString("telefone"));
         setDado(context,"cidade",jason.getString("cidade"));
         setDado(context,"tipo_sanguineo_id",jason.getString("tipo_sanguineo_id"));
+        setDado(context,"regiao_id",jason.getString("regiao_id"));
     }
 
     private static void setDado(Context context, String key, String value) {

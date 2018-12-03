@@ -28,16 +28,16 @@ public class validar {
             return false;
 
             //Valida nome
-        } else if (!nome.matches("/^[a-zA-Z]+$/")) {
-            Toast.makeText(c, "O campo nome possui caractres invalidos", Toast.LENGTH_SHORT).show();
-
-            return false;
-        }
-
-        else if (!cidade.matches("/^[a-zA-Z]+$/")) {
-            Toast.makeText(c, "O campo cidade possui caractres invalidos", Toast.LENGTH_SHORT).show();
-
-            return false;
+//        } else if (!nome.matches("/^[a-zA-Z]+$/")) {
+//            Toast.makeText(c, "O campo nome possui caractres invalidos", Toast.LENGTH_SHORT).show();
+//
+//            return false;
+//        }
+//
+//        else if (!cidade.matches("/^[a-zA-Z]+$/")) {
+//            Toast.makeText(c, "O campo cidade possui caractres invalidos", Toast.LENGTH_SHORT).show();
+//
+//            return false;
         }
 
         else

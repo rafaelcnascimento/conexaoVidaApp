@@ -33,21 +33,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo">
 
-        <EditText
-            android:id="@+id/emailText"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/senhaText"
+            <EditText
+                android:id="@+id/emailText"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                android:singleLine="true"
+                android:textSize="14sp"
+
+                android:drawableTint="#8A0707"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Senha"
-            android:inputType="textPassword" />
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/senhaText"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                android:singleLine="true"
+                android:textSize="14sp"
+
+                android:drawableTint="#8A0707"
+                android:hint="Senha"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/button"
