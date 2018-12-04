@@ -54,7 +54,8 @@ public class user {
                 context.startActivity(intent);
 
             } catch (JSONException E) {
-                Toast.makeText(context, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+                Log.d("error:",E.toString());
+                //Toast.makeText(context, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             }
         }
     }
