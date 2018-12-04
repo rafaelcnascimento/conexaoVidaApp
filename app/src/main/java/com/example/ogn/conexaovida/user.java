@@ -34,7 +34,9 @@ public class user {
 
         String dados = c.execute().get().toString();
 
-        if (dados.equals("404")){
+        Log.d("Dados recebidos", dados);
+
+        if (dados.equals("404")||dados.equals("400") ){
             Toast.makeText(context, "Credenciais inválidas", Toast.LENGTH_SHORT).show();
         } else {
             try {
@@ -54,7 +56,7 @@ public class user {
                 context.startActivity(intent);
 
             } catch (JSONException E) {
-                Log.d("error:",E.toString());
+                Log.d("Erro ",E.toString());
                 //Toast.makeText(context, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             }
         }
@@ -73,6 +75,13 @@ public class user {
         setDado(context,"tipo_sanguineo_id",jason.getString("tipo_sanguineo_id"));
         setDado(context,"regiao_id",jason.getString("regiao_id"));
     }
+
+    public static void senha(Context context, JSONObject jason){
+
+        conexao c = new conexao("mudar-senha/"+getDado(context,"id"),jason, true,getDado(context,"api_token"));
+        c.execute();
+    }
+
 
     private static void setDado(Context context, String key, String value) {
 

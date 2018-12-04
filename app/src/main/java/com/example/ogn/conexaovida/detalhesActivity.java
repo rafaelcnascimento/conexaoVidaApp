@@ -24,6 +24,8 @@ public class detalhesActivity extends menuActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes);
 
+        Context context = this;
+
         JSONObject jason = null;
 
         Intent intent = getIntent();
@@ -46,14 +48,17 @@ public class detalhesActivity extends menuActivity implements AdapterView.OnItem
             quartoEt.setText(jason.getString("quarto"));
             cidadeEt.setText(jason.getString("cidade"));
 
-            gerarSpinner(Integer.parseInt(jason.getString("tipo_sanguineo_id"))- 1);
+            int tipo_sanguineo_id = Integer.parseInt(user.getDado(context,"tipo_sanguineo_id"));
+            int regiao_id = Integer.parseInt(user.getDado(context,"regiao_id"));
+
+            gerarSpinner(tipo_sanguineo_id - 1,regiao_id - 1);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    public void gerarSpinner(int pos){
+    public void gerarSpinner(int sang, int reg){
         // Spinner element
         Spinner spinnerSangue = (Spinner) findViewById(R.id.spinnerSangue);
 
@@ -80,7 +85,34 @@ public class detalhesActivity extends menuActivity implements AdapterView.OnItem
         // attaching data adapter to spinner
         spinnerSangue.setAdapter(dataAdapter);
 
-        spinnerSangue.setSelection(pos);
+        spinnerSangue.setSelection(sang);
+
+        // Spinner element
+        Spinner spinnerRegiao = (Spinner) findViewById(R.id.spinnerRegiao);
+
+        // Spinner click listener
+        spinnerRegiao.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> regiao = new ArrayList<String>();
+        regiao.add("Central");
+        regiao.add("Metropolitana/Litoral");
+        regiao.add("Noroeste");
+        regiao.add("Norte");
+        regiao.add("Oeste");
+        regiao.add("Serra");
+        regiao.add("Sul");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, regiao);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinnerRegiao.setAdapter(dataAdapter2);
+
+        spinnerRegiao.setSelection(reg);
     }
 
     @Override
@@ -92,6 +124,12 @@ public class detalhesActivity extends menuActivity implements AdapterView.OnItem
 
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
+    }
+
+    public void voltar(View v) {
+        Intent intent = new Intent(this, doacoesActivity.class);
+
+        startActivity(intent);
     }
 
 }

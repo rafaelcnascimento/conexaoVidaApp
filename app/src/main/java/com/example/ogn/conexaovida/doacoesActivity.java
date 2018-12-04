@@ -47,7 +47,7 @@ public class doacoesActivity extends menuActivity {
                 new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                         TableLayout.LayoutParams.WRAP_CONTENT);
 
-        lp.setMargins(10,10,10,10);
+        lp.setMargins(0,10,10,10);
 
         try {
             lista  = pedido.getPedidos(context);

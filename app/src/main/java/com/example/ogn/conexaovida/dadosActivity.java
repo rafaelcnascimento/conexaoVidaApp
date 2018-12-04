@@ -50,32 +50,71 @@ public class dadosActivity extends menuActivity implements AdapterView.OnItemSel
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
-        String item = parent.getItemAtPosition(position).toString();
+        String item = null;
 
-        switch (item) {
-            case "O+":
-                novo_ts = 1;
+        switch (parent.getId())
+        {
+            case R.id.spinnerSangue:
+
+                item = parent.getItemAtPosition(position).toString();
+
+                switch (item) {
+                    case "O+":
+                        novo_ts = 1;
+                        break;
+                    case "O-":
+                        novo_ts = 2;
+                        break;
+                    case "A+":
+                        novo_ts = 3;
+                        break;
+                    case "A-":
+                        novo_ts = 4;
+                        break;
+                    case "B+":
+                        novo_ts = 5;
+                        break;
+                    case "B-":
+                        novo_ts = 6;
+                        break;
+                    case "AB+":
+                        novo_ts = 7;
+                        break;
+                    case "AB-":
+                        novo_ts = 8;
+                        break;
+                }
+
                 break;
-            case "O-":
-                novo_ts = 2;
-                break;
-            case "A+":
-                novo_ts = 3;
-                break;
-            case "A-":
-                novo_ts = 4;
-                break;
-            case "B+":
-                novo_ts = 5;
-                break;
-            case "B-":
-                novo_ts = 6;
-                break;
-            case "AB+":
-                novo_ts = 7;
-                break;
-            case "AB-":
-                novo_ts = 8;
+
+            case R.id.spinnerRegiao:
+
+                item = parent.getItemAtPosition(position).toString();
+
+                switch (item) {
+                    case "Central":
+                        nova_reg = 1;
+                        break;
+                    case "Metropolitana/Litoral":
+                        nova_reg = 2;
+                        break;
+                    case "Noroeste":
+                        nova_reg = 3;
+                        break;
+                    case "Norte":
+                        nova_reg = 4;
+                        break;
+                    case "Oeste":
+                        nova_reg = 5;
+                        break;
+                    case "Serra":
+                        nova_reg = 6;
+                        break;
+                    case "Sul":
+                        nova_reg = 7;
+                        break;
+                }
+
                 break;
         }
     }
@@ -108,6 +147,12 @@ public class dadosActivity extends menuActivity implements AdapterView.OnItemSel
             jason.put("tipo_sanguineo_id",user.getDado(context,"tipo_sanguineo_id"));
         } else {
             jason.put("tipo_sanguineo_id",novo_ts);
+        }
+
+        if (nova_reg == 0) {
+            jason.put("regiao_id",user.getDado(context,"regiao_id"));
+        } else {
+            jason.put("regiao_id",nova_reg);
         }
 
         user.atualizar(context,jason);

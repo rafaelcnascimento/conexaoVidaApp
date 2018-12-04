@@ -35,14 +35,14 @@ public class pedidoActivity extends menuActivity implements AdapterView.OnItemSe
 
         // Spinner Drop down elements
         List<String> tipos = new ArrayList<String>();
+        tipos.add("O+");
+        tipos.add("O-");
         tipos.add("A+");
         tipos.add("A-");
         tipos.add("B+");
         tipos.add("B-");
         tipos.add("AB+");
         tipos.add("AB-");
-        tipos.add("O+");
-        tipos.add("O-");
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tipos);
 
@@ -188,7 +188,7 @@ public class pedidoActivity extends menuActivity implements AdapterView.OnItemSe
 
         pedido.cadastar(context,jason);
 
-        Intent intent = new Intent(this, mainActivity.class);
+        Intent intent = new Intent(this, doacoesActivity.class);
 
         startActivity(intent);
 

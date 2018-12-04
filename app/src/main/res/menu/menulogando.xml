@@ -9,10 +9,10 @@
         android:title="Como Funciona" />
     <item
         android:id="@+id/doacoes"
-        android:title="Doações" />
+        android:title="Lista de Pedidos" />
     <item
         android:id="@+id/pedido"
-        android:title="Pedido de Doação" />
+        android:title="Pedir Doação" />
     <item
         android:id="@+id/logout"
         android:title="Logout" />

@@ -109,7 +109,7 @@
                     android:textSize="14sp"
 
                     android:drawableTint="#8A0707"
-                    android:hint="Telefone"
+                    android:hint="Telefone com DDD(Apenas números)"
                     android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>

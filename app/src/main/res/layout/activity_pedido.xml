@@ -87,7 +87,7 @@
 
                     android:drawableTint="#8A0707"
                     android:hint="Hospital"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -110,7 +110,7 @@
 
                     android:drawableTint="#8A0707"
                     android:hint="Endereço do hospital"
-                    android:inputType="number" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -133,7 +133,7 @@
 
                     android:drawableTint="#8A0707"
                     android:hint="Quarto"
-                    android:inputType="textPassword" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
