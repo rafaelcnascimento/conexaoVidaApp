@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -48,8 +49,8 @@ public class detalhesActivity extends menuActivity implements AdapterView.OnItem
             quartoEt.setText(jason.getString("quarto"));
             cidadeEt.setText(jason.getString("cidade"));
 
-            int tipo_sanguineo_id = Integer.parseInt(user.getDado(context,"tipo_sanguineo_id"));
-            int regiao_id = Integer.parseInt(user.getDado(context,"regiao_id"));
+            int tipo_sanguineo_id = Integer.parseInt(jason.getString("tipo_sanguineo_id"));
+            int regiao_id = Integer.parseInt(jason.getString("regiao_id"));
 
             gerarSpinner(tipo_sanguineo_id - 1,regiao_id - 1);
 
@@ -127,9 +128,30 @@ public class detalhesActivity extends menuActivity implements AdapterView.OnItem
     }
 
     public void voltar(View v) {
-        Intent intent = new Intent(this, doacoesActivity.class);
+        Intent intent = getIntent();
+
+        String origem = intent.getStringExtra("com.example.ogn.conexaovida.ORIGEM");
+
+        intent = new Intent(this, doacoesActivity.class);
+
+        intent.putExtra("com.example.ogn.conexaovida.ORIGEM",origem);
 
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        Intent intent = getIntent();
+        String activityMae = intent.getStringExtra("com.example.ogn.conexaovida.ORIGEM");
+
+        if (activityMae != null) {
+            return false;
+        } else {
+            getMenuInflater().inflate(R.menu.menulogando, menu);
+            return true;
+        }
+
     }
 
 }

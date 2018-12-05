@@ -109,4 +109,15 @@ public class user {
 
         return nome[0];
     }
+
+    public static void logout(Context context) throws JSONException {
+
+        JSONObject jason = new JSONObject();
+
+        jason.put("email",user.getDado(context,"email"));
+
+        conexao c = new conexao("logout", jason, true,user.getDado(context,"api_token"));
+
+        c.execute();
+    }
 }

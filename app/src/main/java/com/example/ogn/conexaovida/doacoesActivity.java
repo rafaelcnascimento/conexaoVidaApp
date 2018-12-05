@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -31,6 +32,12 @@ public class doacoesActivity extends menuActivity {
         setContentView(R.layout.activity_doacoes);
 
         String lista = null;
+
+        Intent intent = getIntent();
+
+        final String origem = intent.getStringExtra("com.example.ogn.conexaovida.ORIGEM");
+
+
 
         final Context context = this;
 
@@ -81,7 +88,7 @@ public class doacoesActivity extends menuActivity {
                     //On click function
                     public void onClick(View V) {
                         try {
-                            pedido.Show(context,V.getTag().toString());
+                            pedido.Show(context,V.getTag().toString(),origem);
                         } catch (ExecutionException e) {
                             e.printStackTrace();
                         } catch (InterruptedException e) {
@@ -102,6 +109,21 @@ public class doacoesActivity extends menuActivity {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        Intent intent = getIntent();
+        String activityMae = intent.getStringExtra("com.example.ogn.conexaovida.ORIGEM");
+
+        if (activityMae != null) {
+            return false;
+        } else {
+            getMenuInflater().inflate(R.menu.menulogando, menu);
+            return true;
         }
 
     }

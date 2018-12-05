@@ -29,7 +29,7 @@ public class pedido {
         return lista;
     }
 
-    public static void Show(Context context, String id) throws ExecutionException, InterruptedException {
+    public static void Show(Context context, String id, String origem) throws ExecutionException, InterruptedException {
 
         conexao c = new conexao("doacao/" + id,null, false, user.getDado(context,"api_token"));
 
@@ -38,6 +38,10 @@ public class pedido {
         Log.d("let's go", dados);
 
         Intent intent = new Intent(context, detalhesActivity.class);
+
+        if (origem != null) {
+            intent.putExtra("com.example.ogn.conexaovida.ORIGEM","home");
+        }
 
         intent.putExtra("PEDIDO", dados);
 

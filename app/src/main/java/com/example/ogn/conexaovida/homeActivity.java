@@ -33,4 +33,12 @@ public class homeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void pedidos(View V){
+        Intent intent = new Intent(this, doacoesActivity.class);
+
+        intent.putExtra("com.example.ogn.conexaovida.ORIGEM","home");
+
+        startActivity(intent);
+    }
+
 }
